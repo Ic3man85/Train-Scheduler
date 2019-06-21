@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
+    <title>Train Scheduler</title>
+</head>
+
+<body>
+
+    <div class="container bg-light d-flex flex-column align-items-center">
+        <h1>Train Scheduler</h1>
+        <h3>Toot Toot!!</h3>
+    </div>
+    <div class="container mt-4">
+
+        <h5>Current Train Schedule</h5>
+
+        <table class="table">
+            <thead>
+                <th scope="col">Train Name</th>
+                <th scope="col">Destination</th>
+                <th scope="col">Frequency(min)</th>
+                <th scope="col">Next Arrival</th>
+                <th scope="col">Minutes Away</th>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <div class="container mt-4">
+        <div class="form-group">
+            <label for="name">Train Name</label>
+            <input type="text" class="form-control" id="train-name">
+        </div>
+        <div class="form-group">
+            <label for="destination">Destination</label>
+            <input type="text" class="form-control" id="train-destination">
+        </div>
+        <div class="form-group">
+            <label for="ftrain-time">First Train Time(HH:mm-military time)</label>
+            <input type="text" class="form-control" id="ftrain-time">
+        </div>
+        <div class="form-group">
+            <label for="frequency">Frequency(min)</label>
+            <input type="text" class="form-control" id="frequency">
+        </div>
+        <button type="submit" id="submit" class="btn btn-dark mb-3 mt-3">Submit</button>
+    </div>
+
+    <script src="assets/javascript/app.js"></script>
+</body>
+
+</html>
