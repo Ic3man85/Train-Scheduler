@@ -47,7 +47,7 @@ database.ref().on("child_added", function(childSnapshot) {
     let tTime = childSnapshot.val().nextArrival;
     let tFrequency = childSnapshot.val().frequency;
 
-    let newRow = $("<tr scope=" + "row>").append(
+    let newRow = $("<tr>").append(
         $("<td>").text(tName),
         $("<td>").text(tDestination),
         $("<td>").text(tFrequency),
