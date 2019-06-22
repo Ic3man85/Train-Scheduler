@@ -4,13 +4,22 @@ body {
 
 h1 {
     font-size: 80px;
+    color: gainsboro;
 }
 
-.container {
-    border: 3px solid steelblue;
-    border-radius: 15px;
+h3 {
+    color: gainsboro;
 }
 
 label {
     font-weight: bolder;
+}
+
+.image {
+    background-image: url("../images/train-2.jpg");
+    background-size: cover;
+}
+
+.card-header {
+    color: gainsboro;
 }
