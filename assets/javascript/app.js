@@ -16,6 +16,12 @@ let destination = "";
 let frequency = 0;
 let nextArrival = "";
 
+function Time() {
+    let current = moment().format('LT');
+    $("#current-time").text(current);
+    setTimeout(Time, 1000);
+};
+
 $("#add-train").on("click", function(event) {
     event.preventDefault();
 
@@ -30,7 +36,7 @@ $("#add-train").on("click", function(event) {
         destination: destination,
         frequency: frequency,
         nextArrival: nextArrival,
-        minsAway: ""
+        dateAdded: firebase.database.ServerValue.TIMESTAMP
     });
 
     $("#train-name").val("");
@@ -39,16 +45,30 @@ $("#add-train").on("click", function(event) {
     $("#frequency").val("");
 });
 database.ref().on("child_added", function(childSnapshot) {
+
     let tName = childSnapshot.val().name;
     let tDestination = childSnapshot.val().destination;
     let tTime = childSnapshot.val().nextArrival;
     let tFrequency = childSnapshot.val().frequency;
 
+    let newTime = moment(tTime, "HH:mm").format("HH:mm");
+    let minTime = moment().add(moment(newTime), "minutes");
+    let remainTime = minTime % tFrequency;
+    let minArrival = tFrequency - remainTime;
+    let nextTrain = moment().add(minArrival, "minutes");
+
     let newRow = $("<tr>");
+
     newRow.append($("<td>").text(tName));
     newRow.append($("<td>").text(tDestination));
     newRow.append($("<td class= text-center>").text(tFrequency));
-    newRow.append($("<td class= text-center>").text(tTime));
-    // $("#train-table" > "tbody").append(newRow);
+    newRow.append($("<td>").text(moment(nextTrain).format('LT')));
+    newRow.append($("<td class= text-center>").text(minArrival));
     $("#show-train").append(newRow);
 });
+
+Time();
+
+setInterval(function() {
+    window.location.reload();
+}, 60000);

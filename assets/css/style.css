@@ -1,27 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Courgette&display=swap');
 body {
     background-color: gainsboro;
-    background-image: url("../images/train-3.jpg");
+    background-image: url("../images/train-4.jpg");
     background-repeat: round;
+    font-weight: bolder;
+    font-family: 'Courgette', cursive;
 }
 
 h1 {
-    font-size: 80px;
-    color: black;
-    font-weight: bolder;
-}
-
-h3 {
-    color: black;
-    font-weight: bolder;
-}
-
-label {
-    font-weight: bolder;
-}
-
-.image {
-    /* background-image: url("../images/train-2.jpg"); */
-    background-size: cover;
+    font-size: 60px;
 }
 
 .card-header {
@@ -30,4 +17,10 @@ label {
 
 .card {
     background-color: gainsboro;
+    opacity: .8;
+}
+
+.time {
+    font-size: 32px;
+    font-weight: bolder;
 }
