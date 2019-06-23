@@ -1,14 +1,18 @@
 body {
-    background-image: url("../images/natural_paper_@2X.png");
+    background-color: gainsboro;
+    background-image: url("../images/train-3.jpg");
+    background-repeat: round;
 }
 
 h1 {
     font-size: 80px;
-    color: gainsboro;
+    color: black;
+    font-weight: bolder;
 }
 
 h3 {
-    color: gainsboro;
+    color: black;
+    font-weight: bolder;
 }
 
 label {
@@ -16,10 +20,14 @@ label {
 }
 
 .image {
-    background-image: url("../images/train-2.jpg");
+    /* background-image: url("../images/train-2.jpg"); */
     background-size: cover;
 }
 
 .card-header {
     color: gainsboro;
+}
+
+.card {
+    background-color: gainsboro;
 }

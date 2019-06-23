@@ -16,32 +16,30 @@
 
 <body>
 
-    <div class="image container d-flex flex-column align-items-center">
+    <div class="image container-fluid d-flex flex-column align-items-center">
         <h1>Train Scheduler</h1>
         <h3>Toot Toot!!</h3>
     </div>
-    <div class="container mt-4">
-        <div class="card card-default">
+    <div class="container-fluid mt-4 d-flex">
+        <div class="card card-default w-75 mr-5 ml-2">
 
             <div class="card-header bg-dark">
                 <h5>Current Train Schedule</h5>
             </div>
             <div class="card-body">
-                <table class="table" id="train-table">
+                <table class="table table-hover" id="train-table">
                     <thead>
-                        <th scope="col">Train Name</th>
-                        <th scope="col">Destination</th>
-                        <th scope="col">Frequency(min)</th>
-                        <th scope="col">Next Arrival</th>
-                        <th scope="col">Minutes Away</th>
+                        <th>Train Name</th>
+                        <th>Destination</th>
+                        <th>Frequency(min)</th>
+                        <th>Next Arrival</th>
+                        <th>Minutes Away</th>
                     </thead>
-                    <tbody></tbody>
+                    <tbody id="show-train"></tbody>
                 </table>
             </div>
         </div>
-    </div>
-    <div class="container mt-4">
-        <div class="card card-default">
+        <div class="card card-default w-25 mr-2">
             <div class="card-header bg-dark">
                 <h5>Add Train</h5>
             </div>
