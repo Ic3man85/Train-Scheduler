@@ -14,7 +14,7 @@ let database = firebase.database();
 let name = "";
 let destination = "";
 let frequency = 0;
-let nextArrival = "";
+let trainTime = ""
 
 function Time() {
     let current = moment().format('LT');
@@ -27,7 +27,7 @@ $("#add-train").on("click", function(event) {
 
     name = $("#train-name").val().trim();
     destination = $("#train-destination").val().trim();
-    nextArrival = moment($("#train-time").val().trim(), "HH:mm").format("HH:mm");
+    trainTime = moment($("#train-time").val(), "HH:mm").format("HH:mm");
     frequency = $("#frequency").val().trim();
 
     database.ref().push({
@@ -35,7 +35,7 @@ $("#add-train").on("click", function(event) {
         trainName: name,
         destination: destination,
         frequency: frequency,
-        nextArrival: nextArrival,
+        nextArrival: trainTime,
         dateAdded: firebase.database.ServerValue.TIMESTAMP
     });
 
@@ -45,11 +45,11 @@ $("#add-train").on("click", function(event) {
     $("#frequency").val("");
 });
 database.ref().on("child_added", function(childSnapshot) {
-
     let tName = childSnapshot.val().name;
     let tDestination = childSnapshot.val().destination;
-    let tTime = childSnapshot.val().nextArrival;
+    let tTime = childSnapshot.val().trainTime;
     let tFrequency = childSnapshot.val().frequency;
+    let remove = childSnapshot.key;
 
     let newTime = moment(tTime, "HH:mm").format("HH:mm");
     let minTime = moment().add(moment(newTime), "minutes");
@@ -57,14 +57,13 @@ database.ref().on("child_added", function(childSnapshot) {
     let minArrival = tFrequency - remainTime;
     let nextTrain = moment().add(minArrival, "minutes");
 
-    let newRow = $("<tr>");
-
-    newRow.append($("<td>").text(tName));
-    newRow.append($("<td>").text(tDestination));
-    newRow.append($("<td class= text-center>").text(tFrequency));
-    newRow.append($("<td>").text(moment(nextTrain).format('LT')));
-    newRow.append($("<td class= text-center>").text(minArrival));
-    $("#show-train").append(newRow);
+    let row = $("<tr>");
+    row.append($("<td>").text(tName));
+    row.append($("<td>").text(tDestination));
+    row.append($("<td class= text-center>").text(tFrequency));
+    row.append($("<td>").text(moment(nextTrain).format('LT')));
+    row.append($("<td class= text-center>").text(minArrival));
+    $("#show-train").append(row);
 });
 
 Time();
