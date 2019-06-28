@@ -32,7 +32,7 @@ $("#add-train").on("click", function(event) {
 
     database.ref().push({
 
-        trainName: name,
+        name: name,
         destination: destination,
         frequency: frequency,
         nextArrival: trainTime,
@@ -68,6 +68,6 @@ database.ref().on("child_added", function(childSnapshot) {
 
 Time();
 
-setInterval(function() {
-    window.location.reload();
-}, 60000);
+// setTimeout(function() {
+// window.location.reload();
+// }, 60000);
